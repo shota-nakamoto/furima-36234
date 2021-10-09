@@ -3,54 +3,58 @@
 |Column|Type|Options|
 |------|----|-------|
 | name               | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
-| birthday           | string | null: false |
+| email              | string | null: false, unique: true|
+| encrypted_password | string | null: false |
+| birthday           | date   | null: false |
 | first_name         | string | null: false |
 | last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
 
 ### Association
-- belongs_to :item
-- belongs_to :buyer
+- has_many :items
+- has_many :buyers
 
 ## itemsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-| shohin_name         | string | null: false |
-| shohin_image        | string | null: false |
-| shohin_explanation  | text   | null: false |
-| shohin_detail       | string | null: false |
-| shohin_price        | string | null: false |
-| buyer               | string | null: false |
-| seller              | string | null: false |
+| shohin_name         | string     | null: false |
+| shohin_explanation  | text       | null: false |
+| shohin_detail       | string     | null: false |
+| shohin_price        | integer    | null: false |
+| shohin_status       | string     | null: false |
+| shohin_category     | string     | null: false |
+| buyer               | string     | null: false |
+| seller              | string     | null: false |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :users
-- belongs_to :buyers
+- belongs_to :user
+- belongs_to :buyer
 
 ## buyersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-| postalcode         | string | null: false |
-| prefectures        | string | null: false |
-| city               | string | null: false |
-| address            | string | null: false |
-| building           | string | null: false |
-| telephone          | string | null: false |
+| postalcode         | string  | null: false |
+| prefecture_id      | integer | null: false |
+| city               | string  | null: false |
+| address            | string  | null: false |
+| building           | string  |
+| telephone          | string  | null: false |
 
 ### Association
-- has_many :users
-- has_many :items
-- has_one :seller
+- belongs_to :seller
 
-## sellersテーブル
+## buy_managementsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-| delivery_load      | string | null: false |
-| shipping_area      | string | null: false |
+| delivery_load      | string     | null: false |
+| shipping_area      | string     | null: false |
+| user               | references | null: false, foreign_key: true |
+| buyer              | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :buyer
