@@ -13,7 +13,7 @@
 
 ### Association
 - has_many :items
-- has_many :buyers
+- has_many :buy_managements
 
 ## itemsテーブル
 
@@ -23,41 +23,42 @@
 | shohin_explanation  | text       | null: false |
 | shohin_detail       | string     | null: false |
 | shohin_price        | integer    | null: false |
-| shohin_status       | string     | null: false |
-| shohin_category     | string     | null: false |
+| shohin_status_id    | integer    | null: false |
+| shohin_category_id  | integer    | null: false |
 | buyer               | string     | null: false |
 | seller              | string     | null: false |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :buyer
+- has_one :buy_management
 
 ## buyersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-| postalcode         | string  | null: false |
-| prefecture_id      | integer | null: false |
-| city               | string  | null: false |
-| address            | string  | null: false |
-| building           | string  |
-| telephone          | string  | null: false |
+| postalcode         | string     | null: false |
+| prefecture_id      | integer    | null: false |
+| city               | string     | null: false |
+| address            | string     | null: false |
+| building           | string     |
+| telephone          | string     | null: false |
+| buy_management     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :seller
+- belongs_to :buy_management
 
 ## buy_managementsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-| delivery_load      | string     | null: false |
-| shipping_area      | string     | null: false |
 | user               | references | null: false, foreign_key: true |
 | buyer              | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :buyer
+- has_one :buyer
+- belongs_to :user
+- belongs_to :item
 
 # README
 
