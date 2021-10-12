@@ -21,14 +21,13 @@
 |------|----|-------|
 | shohin_name         | string     | null: false |
 | explanation         | text       | null: false |
-| detail              | string     | null: false |
 | price               | integer    | null: false |
 | status_id           | integer    | null: false |
 | category_id         | integer    | null: false |
 | buyer               | string     | null: false |
 | seller              | string     | null: false |
 | charge_id           | integer    | null: false |
-| sending_area_id     | integer    | null: false |
+| prefecture_id       | integer    | null: false |
 | sending_day_id      | integer    | null: false |
 | user                | references | null: false, foreign_key: true |
 
@@ -56,6 +55,7 @@
 |Column|Type|Options|
 |------|----|-------|
 | user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :buyer
