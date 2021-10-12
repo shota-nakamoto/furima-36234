@@ -20,13 +20,16 @@
 |Column|Type|Options|
 |------|----|-------|
 | shohin_name         | string     | null: false |
-| shohin_explanation  | text       | null: false |
-| shohin_detail       | string     | null: false |
-| shohin_price        | integer    | null: false |
-| shohin_status_id    | integer    | null: false |
-| shohin_category_id  | integer    | null: false |
+| explanation         | text       | null: false |
+| detail              | string     | null: false |
+| price               | integer    | null: false |
+| status_id           | integer    | null: false |
+| category_id         | integer    | null: false |
 | buyer               | string     | null: false |
 | seller              | string     | null: false |
+| charge_id           | integer    | null: false |
+| sending_area_id     | integer    | null: false |
+| sending_day_id      | integer    | null: false |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
@@ -53,7 +56,6 @@
 |Column|Type|Options|
 |------|----|-------|
 | user               | references | null: false, foreign_key: true |
-| buyer              | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :buyer
