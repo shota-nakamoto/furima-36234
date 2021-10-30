@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:genre_id,:status_id,:charge_id,:prefecture_id,:sending_day_id)
+    params.require(:item).permit(:shohin_name,:explanation,:price,:genre_id,:status_id,:charge_id,:prefecture_id,:sending_day_id).merge(user_id: current_user.id)
   end
 
 end
