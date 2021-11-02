@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
-  has_many :buy_managements
+  # has_many :items
+  # has_many :buy_managements
 
   validates :name,            presence: true
   validates :birthday,        presence: true
