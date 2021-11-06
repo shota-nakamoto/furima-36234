@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_one :buy_management
   has_one_attached :image
 
+  validates :content, presence: true, unless: :was_attached?
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :status
